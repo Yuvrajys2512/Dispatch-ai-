@@ -7,6 +7,7 @@ PROVIDER_MODE=real and supplying the relevant keys.
 
 from enum import Enum
 
+from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -42,6 +43,16 @@ class Settings(BaseSettings):
     # Data layer (used from Phase 1)
     database_url: str = "postgresql+psycopg://dispatch:dispatch@localhost:5433/dispatch"
     redis_url: str = "redis://localhost:6380/0"
+
+    @field_validator("database_url", mode="before")
+    @classmethod
+    def _normalise_db_scheme(cls, v: str) -> str:
+        # Render (and most PaaS) emit postgres:// or postgresql:// — both map to
+        # psycopg2 by default. Force psycopg3 so we don't need psycopg2 installed.
+        for prefix in ("postgres://", "postgresql://"):
+            if v.startswith(prefix):
+                return "postgresql+psycopg://" + v[len(prefix):]
+        return v
 
     # --- Real provider config (Phase 7) ---
     # Secrets live only in .env (gitignored); .env.example documents placeholders.
