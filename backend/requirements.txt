@@ -1,0 +1,22 @@
+# --- Web framework ---
+fastapi==0.115.6
+uvicorn==0.34.0
+websockets==14.1
+
+# --- Models / settings ---
+pydantic==2.13.4
+pydantic-settings==2.7.1
+
+# --- Data layer (used from Phase 1) ---
+sqlalchemy==2.0.43
+greenlet==3.5.2          # required by SQLAlchemy's async engine
+alembic==1.14.0
+psycopg[binary]==3.2.13
+redis==5.2.1
+
+# --- Real providers (Phase 7) ---
+anthropic==0.111.0       # real LLM adapter (Claude Haiku 4.5) — witness only
+
+# --- Utils ---
+httpx==0.28.1
+python-multipart==0.0.20

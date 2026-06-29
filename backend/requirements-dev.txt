@@ -1,0 +1,13 @@
+-r requirements.txt
+
+pytest==8.3.4
+pytest-asyncio==0.25.1
+anyio==4.7.0
+ruff==0.8.4
+
+# Infra-free data-layer tests (async SQLite + fake Redis)
+aiosqlite==0.22.1
+fakeredis==2.36.2
+
+# Infra-free real-provider tests (mock the HTTP transport, never hit a real API)
+respx==0.23.1

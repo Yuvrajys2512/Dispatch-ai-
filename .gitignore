@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Env / secrets
+.env
+.env.local
+*.local
+
+# Node / frontend
+node_modules/
+dist/
+.vite/
+*.tsbuildinfo
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Docker volumes (if mapped locally)
+.data/
+
+# Local SQLite scratch DBs (tests use in-memory; never commit a db file)
+*.db
+*.sqlite
+*.sqlite3
+
+# Claude Code session files and memory
+.claude/
+
+# Internal planning / design documents (not part of the public repo)
+Documents/
+
+# Vercel local config
+.vercel/
+
+# Alembic local SQLite (if any)
+alembic.ini.local
+
+# Coverage reports
+htmlcov/
+.coverage
+coverage.xml
+
+# Build artifacts
+*.egg
+build/
