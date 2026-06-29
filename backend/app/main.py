@@ -10,6 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app import __version__
 from app.analytics.router import router as analytics_router
 from app.config import ProviderMode, settings
+from app.demo.router import router as demo_router
 from app.logging_config import configure_logging
 from app.realtime.router import router as realtime_router
 
@@ -50,6 +51,8 @@ app.add_middleware(
 app.include_router(realtime_router)
 # Analytics: day-level ops numbers for the dashboard footer (Phase 6).
 app.include_router(analytics_router)
+# Demo: HTTP trigger to fire simulated calls on the deployed backend.
+app.include_router(demo_router)
 
 
 # Real-provider intake (Phase 7): in PROVIDER_MODE=real, mount the Exotel
